@@ -4,4 +4,3 @@
 
 [build.environment]
   YARN_VERSION = "1.22.13"
-  NODE_ENV = "production"
