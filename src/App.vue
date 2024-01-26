@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="STUDY PROJECT 0.2"/>
+  <router-view/>
+  <ContactButton/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ContactButton from './components/ContactButton.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ContactButton
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'inter', sans-serif;
+};
 </style>
