@@ -1,6 +1,6 @@
 <template>
     <main class="main">
-        <div v-if="cart.length !== 0" class="cart__products">
+        <div v-if="showProducts" class="cart__products">
           <ShopCartProductBlock v-for="product in cart" :key="product.id" :productData="product"/>
           <button class="cart__checkout">
             CONFIRMA TU COMPRA
@@ -20,11 +20,13 @@ import ShopCartProductBlock from '@/components/ShopCartProductBlock.vue'
       },
       data() {
         return {
-          showProducts: false
         }
       },
       computed: {
-        ...mapState(['cart'])
+        ...mapState(['cart']),
+        showProducts(){
+          return this.cart?.length !== 0
+        }
       },
     }
  

@@ -12,7 +12,6 @@ const routes = [
 
     { path: '/productos/:id',
      name: 'ProductDetails',
-     props: true,
      component: () => import('@/pages/ProductDetailsPage.vue')},
 
     { path: '/:pathMatch(.*)*',

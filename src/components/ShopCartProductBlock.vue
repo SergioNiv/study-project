@@ -9,13 +9,13 @@
         </div>
         <div class="product__settings">
             <div class="settings__quantity">
-                <button @click="decrement(this.productData)" class="settings__quantity--subtract">-</button>
+                <button @click="decrement(productData)" class="settings__quantity--subtract">-</button>
                 <p class="settings__quantity--show">{{productData.quantity}}</p>
-                <button @click="increment(this.productData)" class="settings__quantity--plus">+</button>
+                <button @click="increment(productData)" class="settings__quantity--plus">+</button>
             </div>
-            <div class="settings__price">{{ 'S/.' + (productData.price * productData.quantity).toFixed(1) + '0'}}</div>
+            <div class="settings__price">{{ getPrices }}</div>
             <div class="settings__delete">
-                <img @click="deleteProduct(this.productData)" class="settings__delete--icon" src="@/assets/icons/trash-can.svg">
+                <img @click="deleteProduct(productData)" class="settings__delete--icon" src="@/assets/icons/trash-can.svg">
             </div>
         </div>
     </div>
@@ -28,7 +28,6 @@
         },
         data() {
             return {
-                productTotalPrice: [],
             }
         },
         methods: {
@@ -44,7 +43,12 @@
             deleteProduct(selectedData){
                 this.$store.commit('deleteElement', selectedData)
             },
+            },
+        computed: {
+            getPrices(){
+                return 'S/.' + (this.productData.price * this.productData.quantity).toFixed(1) + '0'
             }
+        }
 
     }
 </script>

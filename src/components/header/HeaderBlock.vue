@@ -27,7 +27,7 @@
       <router-link to="/carrito">
         <div class="navigation__cart">
           <img class="navigation__cart--img" src="@/assets/icons/shop-cart.svg" alt="">
-          <div v-if="cart.length !== 0" class="navigation__cart--quantity"> {{ this.cart.length }} </div>
+          <div v-if="showCart" class="navigation__cart--quantity"> {{ cart.length }} </div>
         </div>
       </router-link>
     </div>
@@ -38,11 +38,13 @@ import { mapState } from 'vuex';
 export default {
   data() {
     return {
-      cartQuantityValidation: false
     }
   },
   computed: {
     ...mapState(['cart']),
+    showCart() {
+      return this.cart?.length !== 0
+    }
   },
 }
 </script>
