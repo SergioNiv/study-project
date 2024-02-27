@@ -1,6 +1,6 @@
 <template>
     <div class="contact__button">
-        <a href="https://www.youtube.com/watch?v=LVhJy-CR64Q" target=”_blank”><img class="contact__button--img" src="@/assets/icons/whatsapp.svg" alt=""></a>
+        <a href="" target=”_blank”><img class="contact__button--img" src="@/assets/icons/whatsapp.svg" alt=""></a>
     </div>
 </template>
 <style>

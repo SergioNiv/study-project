@@ -1,15 +1,30 @@
 <template>
     <div class="block">
         <div class="block__img-container">
-            <img class="block__image-container--img" src="@/assets/imgs/img-example.png" alt="">
+            <img class="block__image-container--img" :src="getImage(productData.img)">
         </div>
         <div class="block__information">
-            <p class="block__information--brand">UHU</p>
-            <p class="block__information--product">PEGAMENTO EN BARRA UHU STIC 40G</p>
-            <button class="block__information--button">Ver producto</button>
+            <p class="block__information--brand">{{ productData.brand }}</p>
+            <p class="block__information--product"> {{ productData.tag }} </p>
+            <button @click="sendToDetails(productData.id)" class="block__information--button">Ver producto</button>
         </div>
     </div>
 </template>
+<script>
+    export default {
+        props: {
+            productData: Object,
+        },
+        methods: {
+            sendToDetails(id) {
+                this.$router.push({ name: 'ProductDetails', params: { id: id } });    
+            },
+            getImage(img) {
+                return require(`@/assets/imgs/products/${img}`)
+            },
+        }
+    }
+</script>
 <style scoped>
 .block{
     background-color: rgb(244, 244, 251);
@@ -20,13 +35,14 @@
     border-radius: 3px;
 }
 .block__img-container{
-    width: 40px;
+    width: 80%;
     height: 60%;
     margin: 0 auto;
     padding: 20px 0 10px 0;
 }
 .block__image-container--img{
     width: 100%;
+    height: 100%;
 }
 .block__information{
     background-color: rgb(236, 235, 227);
@@ -43,6 +59,7 @@
 }
 .block__information--product{
     padding-bottom: 5px;
+    min-height: 38px;
     font-size: 12px;
 }
 .block__information--button{

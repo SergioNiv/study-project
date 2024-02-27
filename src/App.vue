@@ -19,5 +19,5 @@ export default {
   box-sizing: border-box;
   margin: 0;
   font-family: 'inter', sans-serif;
-};
+}
 </style>

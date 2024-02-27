@@ -57,15 +57,22 @@
             </div>
         </div>
         <div class="our-location">
-            <div class="our-location__map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d9226.289134551978!2d-71.9539328733997!3d-13.524743431951475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x916dd5fda428f43d%3A0xc20bf5ba40fd8f78!2sAv.%20los%20Incas%20927%2C%20Cusco%2008002!5e0!3m2!1sen!2spe!4v1702561387862!5m2!1sen!2spe" width="100%" height="300" style="border: 5px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+                <div class="our-location__information">
+                    <h1 class="our-location__information--title">
+                        Encuentra nuestro local en:
+                    </h1>
+                    <p class="our-location__information--text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus vero expedita non distinctio.</p>
+                </div>
+                <div class="our-location__map">
+                    <img class="our-location__map--img" src="@/assets/imgs/map.jpg" alt="">
+                </div>
         </div>
     </main>
 </template>
-<style>
+<style scoped>
 .main{
-    padding-top: 180px;
+  padding-top: 180px;
+  min-height: calc(100vh - 250px);
 }
 .about-us{
     width: 100%;
@@ -155,6 +162,28 @@
 .our-brands__images--second img,
 .our-brands__images--third img{
     width: 100px;
+}
+.our-location__information{
+    display: flex;
+    padding: 20px 0 20px 0;
+    flex-direction: column;
+}
+.our-location__information--title{
+    color: black;
+    font-size: 16px;
+}
+.our-location__information--text{
+    color: black;
+    font-size: 14px;
+}
+.our-location__map{
+        display: flex;
+        justify-content: center;
+        background-color: rgb(243, 236, 236);
+}
+.our-location__map--img{
+    width: 520px;
+    height: 330px;
 }
 @media (min-width: 900px){
     .about-us{

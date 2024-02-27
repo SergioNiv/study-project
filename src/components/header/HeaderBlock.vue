@@ -18,12 +18,34 @@
       <img class="header__logo--img" src="@/assets/imgs/logo.jpg" alt="">
     </div>
     <div class="header__navigation">
-      <a class="header__navigation--inicio" href="http://localhost:8080/#/">inicio</a>
-      <a class="header__navigation--products" href="http://localhost:8080/#/productos">productos</a>
-      <a class="header__navigation--contact" href="">contactanos</a>
+      <router-link to="/">
+        <a class="header__navigation--inicio">inicio</a>
+      </router-link>
+      <router-link to="/productos">
+        <a class="header__navigation--products">productos</a>
+      </router-link>
+      <router-link to="/carrito">
+        <div class="navigation__cart">
+          <img class="navigation__cart--img" src="@/assets/icons/shop-cart.svg" alt="">
+          <div v-if="cart.length !== 0" class="navigation__cart--quantity"> {{ this.cart.length }} </div>
+        </div>
+      </router-link>
     </div>
   </header>
 </template>
+<script>
+import { mapState } from 'vuex';
+export default {
+  data() {
+    return {
+      cartQuantityValidation: false
+    }
+  },
+  computed: {
+    ...mapState(['cart']),
+  },
+}
+</script>
 <style scoped>
 .header{
   position: fixed;
@@ -91,23 +113,30 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 15px;
+  padding-right: 30px;
 }
 .header__navigation--inicio,
 .header__navigation--products{
   text-decoration: none;
   color: black;
 }
-.header__navigation--contact{
-  background-color: rgb(60, 60, 146);
-  color: white;
-  text-decoration: none;
-  width: 110px;
-  height: 40px;
+.navigation__cart{
+  position: relative;
+}
+.navigation__cart--img{
+  width: 30px;
+  height: 30px;
+}
+.navigation__cart--quantity{
+  position: absolute;
+  top: 15px;
+  left: -5px;
+  background-color: red;
   text-align: center;
-  border-radius: 3px;
-  line-height: 40px;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.193);
+  color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
 }
 
 @media (min-width: 900px){

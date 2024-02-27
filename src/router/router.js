@@ -2,16 +2,21 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 const routes = [
     { path: '/',
-     component: () => import(/*webpackChuckName: 'HomePage'*/'@/pages/HomePage.vue')},
+     component: () => import('@/pages/HomePage.vue')},
 
     { path: '/productos',
-     component: () => import(/*webpackChuckName: 'ProductPage'*/'@/pages/ProductPage.vue')},
+     component: () => import('@/pages/ProductPage.vue')},
 
-     { path: '/productos/detalles',
-     component: () => import(/*webpackChuckName: 'ProductDetailsPage'*/'@/pages/ProductDetailsPage.vue')},
+    { path: '/carrito',
+     component: () => import('@/pages/CartPage.vue')},
+
+    { path: '/productos/:id',
+     name: 'ProductDetails',
+     props: true,
+     component: () => import('@/pages/ProductDetailsPage.vue')},
 
     { path: '/:pathMatch(.*)*',
-     component: () => import(/*webpackChuckName: 'noPageFound'*/'@/pages/NoPageFound.vue') },
+     component: () => import('@/pages/NoPageFound.vue') },
   ]
 
   const router = createRouter({

@@ -2,23 +2,58 @@
     <main class="main">
         <div class="product">
             <div class="product__primary-information">
-                <h2 class="product__primary-information--title">Pegamento en barra UHU stic X 40G</h2>
-                <h2 class="product__primary-information--brand">UHU</h2>
+                <h2 class="product__primary-information--title">{{ product.tag }}</h2>
+                <h2 class="product__primary-information--brand">{{ product.brand }}</h2>
             </div>
             <div class="product__illustration">
-                <img class="product__illustration--img" src="@/assets/imgs/img-example.png" alt="">
+                <img class="product__illustration--img" :src="getImage(product.img)" alt="">
             </div>
             <div class="product__secondary-information">
-                <p class="product__secondary-information--text">Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                Perferendis quos officiis nobis enim! Vel eveniet quaerat iusto voluptatibus laboriosam</p>
-                <button class="product__secondary-information--button">Consulta por este producto</button>
+                <p class="product__secondary-information--text">{{ product.details}}</p>
+                <button @click="sendProductToCart" class="product__secondary-information--button">Agregar al Carrito</button>
             </div>
         </div>
     </main>
 </template>
-<style>
-.main {
-    padding-top: 180px;
+<script>
+import data from '@/data/data.js'
+export default {
+
+        data() {
+            return {
+                products: data,
+                id: null,
+                product: {}
+            }
+        },
+        methods:{
+            getProductById(id) {
+                for (const i in this.products) {
+                    const product = this.products[i];
+                    if (product.id === id) {
+                        return this.product = product;
+                    }
+                }
+            },
+            getImage(img) {
+                return img ? require(`@/assets/imgs/products/${img}`) : ''
+            },
+            sendProductToCart(){
+                window.alert('Producto agregado!')
+                this.$store.commit('addProduct', this.product); 
+            }
+        },
+        async mounted(){
+            this.id = this.$route.params.id;
+            this.id = parseInt(this.id, 10);
+            await this.getProductById(this.id)
+        }
+}      
+</script>
+<style scoped>
+.main{
+  padding-top: 180px;
+  min-height: calc(100vh - 250px);
 }
 .product__primary-information {
     padding: 40px 20px 10px 25px;
@@ -42,8 +77,6 @@
 }
 .product__illustration--img{
     height: 350px;
-}
-.product__primary-information{
 }
 .product__secondary-information{
     padding: 20px 20px 20px 25px;
