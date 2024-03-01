@@ -2,29 +2,37 @@
     <main class="main">
         <div class="products-data">
             <div class="products-data__quantity">
-                04 producto(s)
+                {{ totalElements }} producto(s)
             </div>
         </div>
         <div class="products-container">
-            <ProductBlock/>
-            <ProductBlock/>
-            <ProductBlock/>
-            <ProductBlock/>
+            <ProductBlock v-for="product in products" :key="product.id" :productData="product"/>
         </div>
     </main>
 </template>
 <script>
 import ProductBlock from '@/components/ProductBlock.vue'
+import data from '@/data/data.js'
 export default {
       components: {
         ProductBlock,
+      },
+      data() {
+        return {
+            products: data
+        }
+      },
+      computed:{
+        totalElements() {
+            return Object.keys(this.products).length;
+        }
       }
     }
 </script>
-<style>
+<style scoped>
 .main{
-    padding-top: 180px;
-    min-height: calc(100vh - 250px)
+  padding-top: 180px;
+  min-height: calc(100vh - 250px);
 }
 .products-data{
     display: flex;
