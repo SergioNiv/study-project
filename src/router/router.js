@@ -15,7 +15,7 @@ const routes = [
      component: () => import('@/pages/ProductDetailsPage.vue')},
 
     { path: '/:pathMatch(.*)*',
-     component: () => import('@/pages/NoPageFound.vue') },
+     component: () => import('@/pages/NoPageFound.vue')},
   ]
 
   const router = createRouter({
